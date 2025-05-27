@@ -1,6 +1,3 @@
-// js/main.js
-
-// 1) Smooth scroll for nav links
 document.querySelectorAll('.nav-list a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -17,7 +14,6 @@ document.querySelectorAll('.nav-list a').forEach(link => {
 const galleryImages = document.querySelectorAll('.gallery img');
 galleryImages.forEach(img => {
   img.addEventListener('click', () => {
-    // Overlay oluştur
     const overlay = document.createElement('div');
     overlay.id = 'img-overlay';
     Object.assign(overlay.style, {
@@ -41,8 +37,6 @@ galleryImages.forEach(img => {
     });
     overlay.appendChild(largeImg);
     document.body.appendChild(overlay);
-
-    // Overlay’a tıklayınca kapat
     overlay.addEventListener('click', () => {
       overlay.remove();
     });
@@ -58,20 +52,14 @@ form.addEventListener('submit', e => {
   const name = form.querySelector('#name').value.trim();
   const email = form.querySelector('#email').value.trim();
   const message = form.querySelector('#message').value.trim();
-
-  // Basit doğrulama
   if (!name || !email) {
     alert('Lütfen adınız ve e-posta adresinizi girin.');
     return;
   }
-
-  // Teşekkür mesajı göster
   const thankYou = document.createElement('p');
   thankYou.textContent = `Teşekkürler, ${name}! Mesajınız alındı. En kısa sürede dönüş yapacağız.`;
   thankYou.style.marginTop = '16px';
   thankYou.style.color = '#fff';
   form.parentNode.insertBefore(thankYou, form.nextSibling);
-
-  // Formu temizle
   form.reset();
 });
